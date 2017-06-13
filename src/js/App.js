@@ -17,7 +17,6 @@ import NotificationIcon from 'grommet/components/icons/base/Notification';
 
 import ImageAdd from './components/ImageAdd';
 import ImageCard from './components/ImageCard';
-import ImageFilter from './components/ImageFilter';
 import ImageNotification from './components/ImageNotification';
 
 const images = [
@@ -46,7 +45,6 @@ export default class ImageLibraryApp extends Component {
     super();
     this.state = {
       showAddImageLayer: false,
-      showFilterSidebar: false,
       showNotificationLayer: false,
     };
   }
@@ -59,7 +57,7 @@ export default class ImageLibraryApp extends Component {
   }
 
   render() {
-    const { showAddImageLayer, showFilterSidebar, showNotificationLayer } = this.state;
+    const { showAddImageLayer, showNotificationLayer } = this.state;
 
     let layer;
     if (showNotificationLayer) {
@@ -72,13 +70,6 @@ export default class ImageLibraryApp extends Component {
           onCancel={() => this.setState({ showAddImageLayer: false })}
           onAdd={image => this.addImage(image)}
         />
-      );
-    }
-
-    let filterSidebar;
-    if (showFilterSidebar) {
-      filterSidebar = (
-        <ImageFilter onClose={() => this.setState({ showFilterSidebar: false })} />
       );
     }
 
@@ -118,11 +109,10 @@ export default class ImageLibraryApp extends Component {
               <Paragraph margin='none'>Last modified today</Paragraph>
               <Button
                 icon={<FilterIcon colorIndex='brand' />}
-                onClick={() => this.setState({ showFilterSidebar: !showFilterSidebar })}
+                onClick={() => {}}
               />
             </Footer>
           </Box>
-          {filterSidebar}
         </Box>
         {layer}
       </App>
