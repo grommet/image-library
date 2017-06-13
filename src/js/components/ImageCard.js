@@ -12,7 +12,7 @@ const ImageCard = ({ image }) => (
     basis='small'
     pad={{ vertical: 'medium', horizontal: 'medium', between: 'medium' }}>
     <img
-      alt='Microsoft'
+      alt={image.name}
       src={image.url}
       width='96px'
       height='96px'
