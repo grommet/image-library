@@ -15,7 +15,6 @@ import FilterIcon from 'grommet/components/icons/base/Filter';
 import GrommetIcon from 'grommet/components/icons/base/BrandGrommetOutline';
 import NotificationIcon from 'grommet/components/icons/base/Notification';
 
-import ImageAdd from './components/ImageAdd';
 import ImageCard from './components/ImageCard';
 import ImageFilter from './components/ImageFilter';
 import ImageNotification from './components/ImageNotification';
@@ -45,33 +44,18 @@ export default class ImageLibraryApp extends Component {
   constructor() {
     super();
     this.state = {
-      showAddImageLayer: false,
       showFilterSidebar: false,
       showNotificationLayer: false,
     };
   }
 
-  addImage(image) {
-    const img = { ...image };
-    img.id = images.length + 1;
-    images.push(img);
-    this.setState({ showAddImageLayer: false });
-  }
-
   render() {
-    const { showAddImageLayer, showFilterSidebar, showNotificationLayer } = this.state;
+    const { showFilterSidebar, showNotificationLayer } = this.state;
 
     let layer;
     if (showNotificationLayer) {
       layer = (
         <ImageNotification onClose={() => this.setState({ showNotificationLayer: false })} />
-      );
-    } else if (showAddImageLayer) {
-      layer = (
-        <ImageAdd
-          onCancel={() => this.setState({ showAddImageLayer: false })}
-          onAdd={image => this.addImage(image)}
-        />
       );
     }
 
@@ -95,7 +79,7 @@ export default class ImageLibraryApp extends Component {
                 <Search inline={true} fill={true} placeHolder='Search' />
                 <Button
                   icon={<AddIcon />}
-                  onClick={() => this.setState({ showAddImageLayer: true })}
+                  onClick={() => {}}
                 />
               </Box>
             </Header>
